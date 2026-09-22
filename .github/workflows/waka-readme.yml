@@ -1,20 +1,17 @@
 name: Waka Readme
 
 on:
+  # for manual workflow trigger
+  workflow_dispatch:
   schedule:
-    # 每天 UTC 0:00 自动更新
-    - cron: '0 0 * * *'
-  workflow_dispatch: # 支持手动触发运行
+    # runs at 12 AM UTC (5:30 AM IST)
+    - cron: "0 0 * * *"
 
 jobs:
   update-readme:
-    name: Update Readme with WakaTime Stats
+    name: WakaReadme DevMetrics
     runs-on: ubuntu-latest
     steps:
-      - uses: athul/waka-readme@master
+      - uses: athul/waka-readme@master # this action name
         with:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
-          SHOW_TITLE: true
-          TIME_RANGE: last_7_days
-          LANG_COUNT: 5
-          SHOW_TIME: true
